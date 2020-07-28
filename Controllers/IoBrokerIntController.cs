@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
+using IOBrokerDataCollector.BusinessLogic;
+
 namespace IOBrokerDataCollector.Controllers
 {
     [Route("api/[controller]")]
@@ -24,6 +26,10 @@ namespace IOBrokerDataCollector.Controllers
         {
             Console.WriteLine("get string");
             Console.WriteLine(id);
+
+            Collector intColl = new Collector();
+            intColl.getIntValue(id);
+
             return "value " + id;
         }
 

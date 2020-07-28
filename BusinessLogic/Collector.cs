@@ -1,9 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
 using System.Net;
 
 using Newtonsoft.Json;
 
-namespace IOBrokerDataCollectorBusinessLogic
+
+namespace IOBrokerDataCollector.BusinessLogic
 {
     public class Collector
     {
@@ -11,16 +16,16 @@ namespace IOBrokerDataCollectorBusinessLogic
         {
             try
             {
-                
+
                 using (WebClient wc = new WebClient())
                 {
-                  
+                    IOBrokerJSONGet ioJson = new IOBrokerJSONGet();
 
                     string downString = AccessData.IOBrokerApi + id;
                     Console.WriteLine("Download String '{0}'", downString);
 
-                    var json = wc.DownloadString(downString);                    
-
+                    var json = wc.DownloadString(downString);
+                    ioJson = JsonConvert.DeserializeObject<IOBrokerJSONGet>(json);
                 }
 
             }
