@@ -7,6 +7,9 @@ using System.Net;
 
 using Newtonsoft.Json;
 
+using JusiJSONHelper;
+//Update-Package
+
 
 namespace IOBrokerDataCollector.BusinessLogic
 {
@@ -16,7 +19,7 @@ namespace IOBrokerDataCollector.BusinessLogic
         {
             try
             {
-
+                //zwave2.0.Node_003.Multilevel_Sensor.humidity
                 using (WebClient wc = new WebClient())
                 {
                     IOBrokerJSONGet ioJson = new IOBrokerJSONGet();
