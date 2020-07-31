@@ -15,7 +15,34 @@ namespace IOBrokerDataCollector.BusinessLogic
 {
     public class Collector
     {
-        public int getIntValue(string id)
+        //public int getIntValue(string id)
+        //{
+        //    try
+        //    {
+        //        //zwave2.0.Node_003.Multilevel_Sensor.humidity
+        //        using (WebClient wc = new WebClient())
+        //        {
+        //            IOBrokerJSONGet ioJson = new IOBrokerJSONGet();
+
+        //            string downString = AccessData.IOBrokerApi + id;
+        //            Console.WriteLine("Download String '{0}'", downString);
+
+        //            var json = wc.DownloadString(downString);
+        //            ioJson = JsonConvert.DeserializeObject<IOBrokerJSONGet>(json);
+        //            return Convert.ToInt32(ioJson.val);
+        //        }
+
+        //    }
+
+        //    catch (Exception ex)
+        //    {
+        //        Console.WriteLine("Fehler beim lesen der Leistung", ex);
+        //        throw;
+        //    }
+
+            
+        //}
+        public IOBrokerJSONGet getIOBrokerValue(string id)
         {
             try
             {
@@ -29,17 +56,18 @@ namespace IOBrokerDataCollector.BusinessLogic
 
                     var json = wc.DownloadString(downString);
                     ioJson = JsonConvert.DeserializeObject<IOBrokerJSONGet>(json);
+                    return ioJson;
                 }
 
             }
 
             catch (Exception ex)
             {
-                Console.WriteLine("Fehler beim lesen der Leistung", ex);
+                Console.WriteLine("Fehler beim lesen von IOBroker", ex);
                 throw;
             }
 
-            return 0;
+
         }
     }
 }

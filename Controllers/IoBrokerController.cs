@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 
 using IOBrokerDataCollector.BusinessLogic;
 
+using Newtonsoft.Json;
+
 using JusiJSONHelper;
 //Update-Package
 
@@ -14,7 +16,7 @@ namespace IOBrokerDataCollector.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class IoBrokerIntController : ControllerBase
+    public class IoBrokerController : ControllerBase
     {
         // GET: api/IoBrokerInt
         //[HttpGet]
@@ -23,17 +25,18 @@ namespace IOBrokerDataCollector.Controllers
         //    return new string[] { "value1", "value2" };
         //}
 
-        // GET: api/IoBrokerInt/5
+        // GET: api/IoBroker/5
         [HttpGet("{id}", Name = "Get")]
-        public string Get(string id)
+        public ActionResult Get(string id)
+            //public string Get(string id)
         {
             Console.WriteLine("get string");
             Console.WriteLine(id);
 
             Collector intColl = new Collector();
-            intColl.getIntValue(id);
 
-            return "value " + id;
+            return Content(JsonConvert.SerializeObject(intColl.getIOBrokerValue(id)), "application/json");
+            //return "value " + intColl.getIntValue(id);
         }
 
         // POST: api/IoBrokerInt

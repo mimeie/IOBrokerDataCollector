@@ -12,7 +12,7 @@
     "IIS Express": {
       "commandName": "IISExpress",
       "launchBrowser": true,
-      "launchUrl": "api/iobrokerint",
+      "launchUrl": "api/iobroker",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
@@ -20,7 +20,7 @@
     "IOBrokerDataCollector": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/iobrokerint",
+      "launchUrl": "api/iobroker",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
@@ -29,7 +29,7 @@
     "Docker": {
       "commandName": "Docker",
       "launchBrowser": true,
-      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/api/iobrokerint",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/api/iobroker",
       "publishAllPorts": true
     }
   }
