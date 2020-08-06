@@ -5,11 +5,10 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-using IOBrokerDataCollector.BusinessLogic;
 
 using Newtonsoft.Json;
 
-using JusiJSONHelper;
+using JusiBase;
 //Update-Package
 
 namespace IOBrokerDataCollector.Controllers
@@ -33,9 +32,9 @@ namespace IOBrokerDataCollector.Controllers
             Console.WriteLine("get string");
             Console.WriteLine(id);
 
-            Collector intColl = new Collector();
-
-            return Content(JsonConvert.SerializeObject(intColl.getIOBrokerValue(id)), "application/json");
+            IOBrokerWebConnector ioColl = new IOBrokerWebConnector();
+            
+            return Content(JsonConvert.SerializeObject(ioColl.GetIOBrokerValue(id)), "application/json");
             //return "value " + intColl.getIntValue(id);
         }
 
