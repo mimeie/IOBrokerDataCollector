@@ -29,12 +29,20 @@ namespace IOBrokerDataCollector.Controllers
         public ActionResult Get(string id)
             //public string Get(string id)
         {
-            Console.WriteLine("get string");
-            Console.WriteLine(id);
-
-            IOBrokerWebConnector ioColl = new IOBrokerWebConnector();
+            try
+            {             
             
-            return Content(JsonConvert.SerializeObject(ioColl.GetIOBrokerValue(id)), "application/json");
+                Console.WriteLine("getter aufgerufen: " + id);            
+
+                IOBrokerWebConnector ioColl = new IOBrokerWebConnector();            
+                return Content(JsonConvert.SerializeObject(ioColl.GetIOBrokerValue(id)), "application/json");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("error bei return: " + ex.InnerException);
+                return null;
+                //throw;
+            }
             //return "value " + intColl.getIntValue(id);
         }
 
