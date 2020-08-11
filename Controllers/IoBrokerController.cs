@@ -34,8 +34,18 @@ namespace IOBrokerDataCollector.Controllers
             
                 Console.WriteLine("getter aufgerufen: " + id);            
 
-                IOBrokerWebConnector ioColl = new IOBrokerWebConnector();            
-                return Content(JsonConvert.SerializeObject(ioColl.GetIOBrokerValue(id)), "application/json");
+                IOBrokerWebConnector ioColl = new IOBrokerWebConnector();
+                IOBrokerJSONGet result = ioColl.GetIOBrokerValue(id);
+                if (result != null)
+                {
+                    Console.WriteLine("content zurück erhalten");
+                    return Content(JsonConvert.SerializeObject(result), "application/json");
+                }
+                else
+                {
+                    Console.WriteLine("content null, ohne error");
+                    return null;
+                }
             }
             catch (Exception ex)
             {
