@@ -5,6 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
+using System.Diagnostics;
+
 
 using Newtonsoft.Json;
 
@@ -30,15 +32,17 @@ namespace IOBrokerDataCollector.Controllers
             //public string Get(string id)
         {
             try
-            {             
-            
+            {
+                Stopwatch sw = new Stopwatch();
+                sw.Start();
+
                 Console.WriteLine("getter aufgerufen: " + id);            
 
                 IOBrokerWebConnector ioColl = new IOBrokerWebConnector();
                 IOBrokerJSONGet result = ioColl.GetIOBrokerValue(id);
                 if (result != null)
                 {
-                    Console.WriteLine("content zurück erhalten");
+                    Console.WriteLine("content zurück erhalten, dauer: {0}", sw.ElapsedMilliseconds);
                     return Content(JsonConvert.SerializeObject(result), "application/json");
                 }
                 else
